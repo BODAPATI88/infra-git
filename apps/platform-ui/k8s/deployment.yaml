@@ -30,9 +30,9 @@ spec:
       containers:
       - name: bvrinfra-platform
 
-        image: bvrinfra-platform:v1
+        image: ghcr.io/bodapati88/bvrinfra-platform:latest
 
-        imagePullPolicy: Never
+        imagePullPolicy: Always
 
         ports:
         - containerPort: 8080
