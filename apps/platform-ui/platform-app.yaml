@@ -9,9 +9,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/BODAPATI88/infra-homelab.git
-    targetRevision: main
-    path: apps/platform
+    repoURL: https://github.com/BODAPATI88/infra-git.git
+    targetRevision: feature/live-k8s-api
+    path: apps/platform-ui
 
   destination:
     server: https://kubernetes.default.svc
