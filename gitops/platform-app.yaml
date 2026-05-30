@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/BODAPATI88/infra-git.git
     targetRevision: feature/live-k8s-api
-    path: apps/platform-ui
+    path: apps/platform-ui/k8s
 
   destination:
     server: https://kubernetes.default.svc
