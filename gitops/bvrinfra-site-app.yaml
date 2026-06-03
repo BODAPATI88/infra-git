@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bvrinfra-site
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/BODAPATI88/infra-git.git
+    targetRevision: feature/live-k8s-api
+    path: apps/bvrinfra-site
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
