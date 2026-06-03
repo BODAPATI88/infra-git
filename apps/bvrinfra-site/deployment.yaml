@@ -2,21 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  namespace: apps
   name: bvrinfra-site
-  labels:
-    app: bvrinfra-site
-    managed-by: argocd
+  namespace: apps
 
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
-
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
 
   selector:
     matchLabels:
@@ -28,8 +18,6 @@ spec:
         app: bvrinfra-site
 
     spec:
-      nodeSelector:
-        workload: apps
 
       imagePullSecrets:
         - name: ghcr-secret
@@ -37,32 +25,9 @@ spec:
       containers:
         - name: bvrinfra-site
 
-          image: ghcr.io/bodapati88/bvrinfra-site:sha-678f758
+          image: ghcr.io/bodapati88/bvrinfra-site:claude-ui-v3
 
           imagePullPolicy: Always
 
           ports:
             - containerPort: 80
-
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 10
-
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 15
-            periodSeconds: 20
-
-          resources:
-            requests:
-              cpu: "50m"
-              memory: "64Mi"
-
-            limits:
-              cpu: "250m"
-              memory: "256Mi"
