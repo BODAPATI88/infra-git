@@ -6,7 +6,7 @@ metadata:
   namespace: platform
 
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 
 spec:
   ingressClassName: traefik
