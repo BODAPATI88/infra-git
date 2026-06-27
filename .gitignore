@@ -1,0 +1,30 @@
+# Shell
+*.sh~
+*.swp
+*.swo
+
+# Kubernetes
+.kube/
+*.kubeconfig
+
+# Terraform
+.terraform/
+*.tfstate
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
