@@ -21,12 +21,8 @@ spec:
 
       serviceAccountName: platform-sa
       nodeSelector:
-        kubernetes.io/hostname: k8s-master
+        kubernetes.io/hostname: k8s-worker1
 
-      tolerations:
-      - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
 
       containers:
       - name: bvrinfra-platform
