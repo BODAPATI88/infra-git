@@ -20,8 +20,6 @@ spec:
     spec:
 
       serviceAccountName: platform-sa
-      nodeSelector:
-        kubernetes.io/hostname: k8s-worker1
 
 
       containers:
