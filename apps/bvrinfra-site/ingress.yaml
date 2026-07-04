@@ -2,8 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 
 metadata:
-  namespace: apps
   name: bvrinfra-site
+  namespace: apps
 
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-cloudflare
@@ -13,32 +13,41 @@ spec:
   ingressClassName: traefik
 
   tls:
-  - hosts:
-    - bvrinfra.in
-    - www.bvrinfra.in
-    secretName: bvrinfra-site-tls
+    - hosts:
+        - bvrinfra.in
+        - www.bvrinfra.in
+      secretName: bvrinfra-site-tls
 
   rules:
-  - host: bvrinfra.in
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
 
-        backend:
-          service:
-            name: bvrinfra-site
-            port:
-              number: 80
+    - host: bvrinfra.in
+      http:
+        paths:
 
-  - host: www.bvrinfra.in
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
+          - path: /metrics
+            pathType: Prefix
+            backend:
+              service:
+                name: metrics-api
+                port:
+                  number: 8000
 
-        backend:
-          service:
-            name: bvrinfra-site
-            port:
-              number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bvrinfra-site
+                port:
+                  number: 80
+
+    - host: www.bvrinfra.in
+      http:
+        paths:
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bvrinfra-site
+                port:
+                  number: 80

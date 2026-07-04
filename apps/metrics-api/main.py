@@ -6,7 +6,11 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://platform.bvrinfra.in"],
+    allow_origins=[
+        "https://platform.bvrinfra.in",
+        "https://bvrinfra.in",
+        "https://www.bvrinfra.in"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
